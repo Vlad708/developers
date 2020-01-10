@@ -1,6 +1,6 @@
-# Mews CTU workshop
+# Company CTU workshop
 
-## Automate hotel with Mews API
+## Automate hotel with Company API
 
 ## Documentation
 
@@ -13,7 +13,7 @@
 
 # Tasks
 
-## [optional] Create a new customer with your email address, if you are interested in working in Mews
+## [optional] Create a new customer with your email address, if you are interested in working in Company
 
 ## Find all reservations for customers that are staying this week at the hotel on their birthday
 

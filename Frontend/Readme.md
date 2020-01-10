@@ -1,4 +1,4 @@
-# Mews frontend developer task
+# Company frontend developer task
 
 Before starting, make sure you have Node.js, npm and Git bash or alternative. To install all project dependencies, run `npm install` in the root folder.
 
