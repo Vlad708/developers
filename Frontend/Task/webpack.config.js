@@ -1,34 +1,52 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-const webpackConfig = {
-    plugins: [
-        new webpack.NoErrorsPlugin(),
-    ],
-    entry: {
-        app: './app/app.js',
+module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+  entry: {
+    app: './app/index.js',
     },
     output: {
         filename: '[name].js',
         library: 'app',
         libraryTarget: 'window',
     },
-    resolve: {
-        extensions: ['', '.js', '.json'],
-    },
-    module: {
-        loaders: [{
-            test: /\.js?$/,
-            exclude: /(node_modules|Generated)/,
-            loader: 'babel',
-        }, {
-            test: /\.json$/,
-            loader: 'json',
-        }],
-    },
-    devtool: 'eval',
-    devServer: {
-        contentBase: './app',
-    },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './app/index.html',
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './app',
+  },
+  module: {
+    rules: [
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+    ],
+  },
 };
-
-module.exports = webpackConfig;
